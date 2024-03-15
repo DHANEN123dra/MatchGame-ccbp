@@ -279,7 +279,7 @@ class MatchGameApp extends Component {
     }
   }
 
-  filteredList = tabId => {
+  getActiveList = tabId => {
     return imagesList.filter(eachItem => eachItem.category === tabId)
   }
 
@@ -321,7 +321,7 @@ class MatchGameApp extends Component {
     const {matchImageUrl, score, timer, isTimerRunning, activeTabId} =
       this.state
 
-  
+  const filteredList = this.getActiveList()
 
     return (
       <div className="app-container">
