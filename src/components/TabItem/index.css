@@ -1,0 +1,21 @@
+.tabItem-container {
+  list-style-type: none;
+}
+
+.active {
+  font-size: 22px;
+  font-family: 'Roboto';
+  background-color: transparent;
+  color: #ffffff;
+  border-bottom: 3px solid #fec653;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
+.in-active {
+  font-size: 22px;
+  font-family: 'Roboto';
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+}
