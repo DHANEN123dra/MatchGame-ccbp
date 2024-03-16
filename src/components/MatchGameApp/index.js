@@ -322,7 +322,7 @@ class MatchGameApp extends Component {
     const {matchImageUrl, score, timer, isTimerRunning, activeTabId} =
       this.state
 
-  const filteredList = this.getActiveList()
+  const filteredList = this.getActiveList(activeTabId)
 
     return (
       <div className="app-container">
