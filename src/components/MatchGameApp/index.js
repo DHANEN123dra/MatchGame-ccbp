@@ -250,7 +250,7 @@ const imagesList = [
 
 class MatchGameApp extends Component {
   state = {
-    matchImageUrl: imagesList[0].imageUrl,
+    matchImageIndex: 0,
     score: 0,
     timer: 60,
     activeTabId: tabsList[0].tabId,
@@ -283,15 +283,16 @@ class MatchGameApp extends Component {
     return imagesList.filter(eachItem => eachItem.category === tabId)
   }
 
-  checkMatch = id => {
-    const randomIndex = imagesList[Math.ceil(Math.random() * imagesList.length)]
-    const randomId = imagesList[randomIndex].id
-    const randomImage = imagesList[randomIndex].imageUrl
+  checkMatch = checkId => {
+    const matchImageIndex = this.state
+    const randomIndex = Math.ceil(Math.random() * imagesList.length)
+    const {id} = imagesList[matchImageIndex]
+    
 
-    if (id === randomId) {
+    if (checkId === id) {
       this.setState(prevState => ({
         score: prevState.score + 1,
-        matchImageUrl: randomImage,
+        matchImageIndex: randomIndex,
       }))
     } else {
       this.onClearInterval()
@@ -312,7 +313,7 @@ class MatchGameApp extends Component {
       score: 0,
       timer: 60,
       isTimerRunning: true,
-      matchImageUrl: 0,
+      matchImageIndex: 0,
     })
     this.timerId = setInterval(this.tick, 1000)
   }
@@ -350,7 +351,7 @@ class MatchGameApp extends Component {
         <div className="game-container">
           {isTimerRunning && (
             <div className="match-game-container">
-              <img className="match-image" src={matchImageUrl} alt="match" />
+              <img className="match-image" src={imageList[matchImageIndex].imageUrl} alt="match" />
               <ul className="tabItems-list-container">
                 {tabsList.map(eachTab => (
                   <TabItem
